@@ -131,8 +131,7 @@ async fn root_handler() -> &'static str {
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let model = TextEmbedding::try_new(InitOptions::new(EmbeddingModel::BGESmallENV15)).with_show_download_progress(true),)?;
-
+    let model = TextEmbedding::try_new(InitOptions::new(EmbeddingModel::BGESmallENV15).with_show_download_progress(true)).unwrap();
     let model = Arc::new(model);
 
     let open_routes = Router::new()
